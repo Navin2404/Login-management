@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import userModel from '../models/userModel';
+import userModel from '../models/userModel.js';
 
 
 export const register = async (req,res) => {
@@ -30,7 +30,13 @@ export const register = async (req,res) => {
             maxAge: 7 * 24 * 60 * 60 * 1000
         });
 
+        return res.status(201).json({
+            success: true,
+            message: "User registered successfully"
+        });
+
     }catch(error){
+        console.error(error)
         res.json( {success: false, message:"something went wrong"})
     }
 }
@@ -84,7 +90,7 @@ export const logout = async (req,res)=>{
         })
 
         return res.josn({success: true, message: "Logged out"})
-        
+
     }catch(error){
         return res.json({ success:false, message:error.message });
     }
