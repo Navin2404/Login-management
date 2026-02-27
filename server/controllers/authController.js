@@ -237,6 +237,8 @@ export const sendResetOtp = async(req,res)=> {
 
 } 
 
+
+
 // Reset user password
 export const resetPassword = async(req,res) => {
     const {email, otp, newPassword} = req.body;
@@ -267,11 +269,10 @@ export const resetPassword = async(req,res) => {
 
         await user.save();
 
-        return res.json({success:true, message: 'Password has been successfully'});
-        
+        return res.json({success:true, message: 'Password has been updated successfully'});
+
     }catch(error){
 
     }
 }
-
 
