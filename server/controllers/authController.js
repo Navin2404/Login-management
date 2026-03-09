@@ -123,7 +123,7 @@ export const sendVerifyOtp = async(req,res)=> {
 
         const otp = String(Math.floor(100000 + Math.random() * 900000));
 
-        user.sendVerifyOtp = otp;
+        user.verifyOtp = otp;
         user.verifyOtpExpireAt = Date.now() + 24 * 60 * 60 * 1000;
 
         await user.save();
@@ -161,8 +161,8 @@ export const verifyEmail = async(req,res) => {
             return res.json({success: false, message: 'User not found'});
         }
 
-        if(!user.verifyOtp === '' || !user.verifyOtp !== String(otp)){
-            return res.json({success:false, message:"Invalid Otp"});
+        if (!user.verifyOtp || String(user.verifyOtp) !== String(otp)) {
+            return res.json({ success: false, message: "Invalid Otp" });
         }
 
         if(user.verifyOtpExpireAt < Date.now()){
