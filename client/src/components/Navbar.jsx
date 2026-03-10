@@ -52,12 +52,12 @@ const Navbar = () => {
               <ul className='list-none m-0 p-2 bg-gray-100 text-sm'>
                 {/* {console.log(userData)} */}
                 {userData?.isAccountVerified === false && (
-                  <li onClick={sendVerificationOtp} className='py-1 px-2 hover:bg-gray-200 cursor-pointer'>
+                  <li onClick={sendVerificationOtp} className='py-2 px-4 hover:bg-gray-200 cursor-pointer whitespace-nowrap'>
                     Verify email
                   </li>
                 )}
                 
-                <li onClick={logout}className='py-1 px-2 hover:bg-gray-200 cursor-pointer'>Log out</li>
+                <li onClick={logout}className='py-2 px-4 hover:bg-gray-200 cursor-pointer whitespace-nowrap'>Log out</li>
               </ul>
           </div>
 
