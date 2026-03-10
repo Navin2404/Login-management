@@ -2,7 +2,7 @@ import { assets } from '../assets/assets'
 import { AppContent } from '../context/AppContext'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import {toast} from 'react-toastify'
 
 
@@ -58,6 +58,10 @@ const EmailVerify = () => {
     }
 
   }
+
+  useEffect(()=> {
+    isLoggedin && userData && userData.isAccountVerified && navigate('/')
+  }, [isLoggedin, userData])
 
   return (
     <div className='flex items-center justify-center min-h-screen bg-center'
